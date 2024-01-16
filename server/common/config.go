@@ -363,7 +363,7 @@ func (this *Configuration) Export() interface{} {
 		RefreshAfterUpload      bool              `json:"refresh_after_upload"`
 		FilePageDefaultSort     string            `json:"default_sort"`
 		FilePageDefaultView     string            `json:"default_view"`
-		FilePageIncludeTime     bool              `json:"incude_time"`
+		FilePageIncludeTime     bool              `json:"include_time"`
 		AuthMiddleware          []string          `json:"auth"`
 		Thumbnailer             []string          `json:"thumbnailer"`
 		EnableChromecast        bool              `json:"enable_chromecast"`
@@ -383,7 +383,7 @@ func (this *Configuration) Export() interface{} {
 		RefreshAfterUpload:      this.Get("general.refresh_after_upload").Bool(),
 		FilePageDefaultSort:     this.Get("general.filepage_default_sort").String(),
 		FilePageDefaultView:     this.Get("general.filepage_default_view").String(),
-		FilePageIncludeTime:     this.Get("general.filepage_include_time").Int(),
+		FilePageIncludeTime:     this.Get("general.filepage_include_time").Bool(),
 		AuthMiddleware: func() []string {
 			if this.Get("middleware.identity_provider.type").String() == "" {
 				return []string{}
