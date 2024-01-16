@@ -507,7 +507,11 @@ const DateTime = (props) => {
         }
         const t = new Date(timestamp);
         if("DateTimeFormat" in Intl) {
-            const str = new Intl.DateTimeFormat({ dateStyle: "short" }).format(t);
+            const options = { dateStyle: "short" };
+            if (window.CONFIG && window.CONFIG['filepage_include_time']) {
+                options.timeStyle = "medium";
+            }
+            const str = new Intl.DateTimeFormat(options).format(t);
             if (str.length <= 10) return str;
         }
         return t.getFullYear() + "-" + leftPad((t.getMonth() + 1).toString(), 2) + "-" + leftPad(t.getDate().toString(), 2);
